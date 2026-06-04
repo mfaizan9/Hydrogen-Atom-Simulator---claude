@@ -1,0 +1,45 @@
+/* Hydrogen Atom Simulator - styling.
+   The original is entirely code-drawn vector art, so almost everything is rendered on
+   the <canvas>.  CSS here only sets up the stage, the self-hosted fonts, and the cursor. */
+
+@font-face {
+  font-family: "Verdana";
+  src: url("../assets/fonts/Verdana.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Embedded WordPerfect Greek font from the original (used by the source for the Greek
+   transition subscripts).  We additionally map those glyphs to Unicode Greek in JS so the
+   labels render identically (Lα, Lβ, ...) regardless of the browser's cmap handling. */
+@font-face {
+  font-family: "WP Greek Century";
+  src: url("../assets/fonts/WPGreekCentury.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #cccccc;          /* SWF SetBackgroundColor = 0xCCCCCC */
+}
+
+#stage {
+  position: relative;
+  width: 950px;
+  height: 640px;
+  margin: 0 auto;
+  background: #cccccc;
+}
+
+#screen {
+  display: block;
+  width: 950px;
+  height: 640px;
+}
+
+/* The atom-diagram electron is draggable; reflect that with a move cursor when hovering it.
+   The actual cursor switching is handled in JS by toggling this class on the canvas. */
+#screen.dragcursor { cursor: move; }
+#screen.handcursor { cursor: pointer; }
+#screen.textcursor { cursor: default; }
